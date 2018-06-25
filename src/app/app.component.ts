@@ -1,13 +1,11 @@
-import { Component, Pipe, PipeTransform } from '@angular/core';
-import { isString } from '../helpers/helpers';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-@Pipe({name: 'reverse'})
-  export class AppComponent implements PipeTransform {
+export class AppComponent {
   appStatus = new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve('stable');
@@ -53,23 +51,6 @@ import { isString } from '../helpers/helpers';
       name: 'New Server',
       status: 'stable',
       started: new Date(15, 1, 2017)
-    });
-  }
-  transform(input: any): any {
-    if (isString(input)) {
-      return input.split('').reverse().join('');
-    }
-
-    return Array.isArray(input)
-      ? input.slice().reverse()
-      : input;
-  }
-  onSearchServer() {
-    this.servers.find({
-      instanceType: 'instanceType',
-      name: 'New Server',
-      status: 'stable',
-      started: new Date(15, 1, 2017) 
     });
   }
 }
