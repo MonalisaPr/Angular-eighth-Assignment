@@ -21,11 +21,11 @@
           {{ server.started | date:'fullDate' | uppercase }}
         </li>
       </ul>
-      <input type="text" [(ngModel)]="filteredStatus">
+       <!--<input type="text" [(ngModel)]="filteredStatus">
       <br>
       <button class="btn btn-primary" (click)="onSearchServer()">Search Server</button>
       <br><br>
-      <!--<ul class="list-group">
+     <ul class="list-group">
         <li
           class="list-group-item"
           *ngFor="let name of servers"
