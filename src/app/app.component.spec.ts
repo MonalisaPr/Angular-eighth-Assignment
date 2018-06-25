@@ -1,27 +1,34 @@
-import { Ng2SearchPipe } from './ng2-filter.pipe';
+/* tslint:disable:no-unused-variable */
 
-describe('Pipe: Default', () => {
-    let pipe: Ng2SearchPipe;
+import { TestBed, async } from '@angular/core/testing';
+import { AppComponent } from './app.component';
 
-    beforeEach(() => {
-        pipe = new Ng2SearchPipe();
+describe('AppComponent', () => {
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent
+      ],
     });
+    TestBed.compileComponents();
+  });
 
-    it('Return the same list if the "term" is invalid', () => {
-        const list = [{ a: 'b' }, { a: 'c' }];
-        expect(pipe.transform(list, null)).toBe(list);
-        expect(pipe.transform(list, undefined)).toBe(list);
-        expect(pipe.transform(null, undefined)).toBe(null);
-        expect(pipe.transform(undefined, undefined)).toBe(undefined);
-    });
+  it('should create the app', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  }));
 
-    it('Return the same list if the "list" is invalid', () => {
-        expect(pipe.transform(null, 'hello')).toBe(null);
-        expect(pipe.transform(undefined, 'hello')).toBe(undefined);
-    });
+  it(`should have as title 'app works!'`, async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('app works!');
+  }));
 
-    it('Filter the elements', () => {
-        const list = [{ a: 'b' }, { a: 'c' }];
-        expect(pipe.transform(list, 'b')).toEqual([{ a: 'b' }]);
-    });
+  it('should render title in a h1 tag', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('app works!');
+  }));
 });
